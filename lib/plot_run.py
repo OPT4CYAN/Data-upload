@@ -78,15 +78,15 @@ def plot_run (dir_input,today,site,sentinel_dir)->str:
     ##############################################################################    
     #all
     ##############################################################################
-    #rrs_all=dirs_data['rrs_fil'][1:,5:].astype(float)
-    #year_data=np.nanmean(rrs_all,axis=0)
-    #year_std= np.nanstd(rrs_all,axis=0)
-    #rrs_plot(wl,year_data,output_dir+"rrs/","alldays")
+    rrs_all=dirs_data['rrs_fil'][1:,5:].astype(float)
+    year_data=np.nanmean(rrs_all,axis=0)
+    year_std= np.nanstd(rrs_all,axis=0)
+    rrs_plot(wl,year_data,output_dir+"rrs/","alldays")
     
 
-    #chl_pcu(normal_fech,dirs_data['chl_index_fil'],dirs_data['chlstd_index_fil'],dirs_data['pcu_index_fil'],dirs_data['pcustd_index_fil'],output_dir+"chl/","alldays",False)
+    chl_pcu(normal_fech,dirs_data['chl_index_fil'],dirs_data['chlstd_index_fil'],dirs_data['pcu_index_fil'],dirs_data['pcustd_index_fil'],output_dir+"chl/","alldays",False)
     
-    #ndci_plot(normal_fech,dirs_data['ndci_index_fil'],dirs_data[site],output_dir+"ndci/","alldays",False)
+    ndci_plot(normal_fech,dirs_data['ndci_index_fil'],dirs_data[site],output_dir+"ndci/","alldays",False)
     
     ##############################################################################    
     #Rrs plot today
@@ -230,72 +230,72 @@ def plot_run (dir_input,today,site,sentinel_dir)->str:
     
     ############################################################################## 
     #hayar meses
-    #rrs=dirs_data['rrs_fil'][1:,5:].astype(float)
-    #years                    = np.array([nf[6:] for nf in normal_fech])
-    #uniq_year                =np.unique(years)
-    #for y in uniq_year:
-    #    indice_year             = np.where(y==years)[0]
-    #    year_fech               =normal_fech[indice_year]
-    #    
-    #    year_pcu=dirs_data['pcu_index_all'][indice_year]
-    #    year_pcu_dif=dirs_data['pcu_index_fil'][indice_year]
-    #    year_chl=dirs_data['chl_index_all'][indice_year]
-    #    year_chl_dif=dirs_data['chl_index_fil'][indice_year]
-    #    year_ndci=dirs_data['ndci_index_all'][indice_year]
-    #    year_ndci_dif=dirs_data['ndci_index_fil'][indice_year]
-    #    year_pcu_std=dirs_data['pcustd_index_fil'][indice_year]
-    #    year_chl_std=dirs_data['chlstd_index_fil'][indice_year]
-    #    year_ndci_sen=dirs_data[site][indice_year] 
-    #    year_rrs                = np.nanmean(dirs_data['rrs_fil'][1:,5:].astype(float)[indice_year],axis=0)
-    #    
+    rrs=dirs_data['rrs_fil'][1:,5:].astype(float)
+    years                    = np.array([nf[6:] for nf in normal_fech])
+    uniq_year                =np.unique(years)
+    for y in uniq_year:
+        indice_year             = np.where(y==years)[0]
+        year_fech               =normal_fech[indice_year]
+        
+        year_pcu=dirs_data['pcu_index_all'][indice_year]
+        year_pcu_dif=dirs_data['pcu_index_fil'][indice_year]
+        year_chl=dirs_data['chl_index_all'][indice_year]
+        year_chl_dif=dirs_data['chl_index_fil'][indice_year]
+        year_ndci=dirs_data['ndci_index_all'][indice_year]
+        year_ndci_dif=dirs_data['ndci_index_fil'][indice_year]
+        year_pcu_std=dirs_data['pcustd_index_fil'][indice_year]
+        year_chl_std=dirs_data['chlstd_index_fil'][indice_year]
+        year_ndci_sen=dirs_data[site][indice_year] 
+        year_rrs                = np.nanmean(dirs_data['rrs_fil'][1:,5:].astype(float)[indice_year],axis=0)
+        
   
-    #    rrs_plot(wl,year_rrs,output_dir+"rrs/",str(y))
-    #    ndci_plot(year_fech,year_ndci_dif,year_ndci_sen,output_dir+"ndci/",str(y),False)
-    #    ndci_plot(year_fech,year_ndci_dif,year_ndci_sen,output_dir+"ndci/","this_year",False)
-    #    chl_pcu(year_fech,year_chl_dif,year_chl_std,year_pcu_dif,year_pcu_std,output_dir+"chl/",str(y),False)
-    #    chl_pcu(year_fech,year_chl_dif,year_chl_std,year_pcu_dif,year_pcu_std,output_dir+"chl/","this_year",False)
-    #    normal_year              = normal_fech[np.where(y==years)[0]]
-    #    normal_month             = np.array([nf[3:5] for nf in normal_year])
+        rrs_plot(wl,year_rrs,output_dir+"rrs/",str(y))
+        ndci_plot(year_fech,year_ndci_dif,year_ndci_sen,output_dir+"ndci/",str(y),False)
+        ndci_plot(year_fech,year_ndci_dif,year_ndci_sen,output_dir+"ndci/","this_year",False)
+        chl_pcu(year_fech,year_chl_dif,year_chl_std,year_pcu_dif,year_pcu_std,output_dir+"chl/",str(y),False)
+        chl_pcu(year_fech,year_chl_dif,year_chl_std,year_pcu_dif,year_pcu_std,output_dir+"chl/","this_year",False)
+        normal_year              = normal_fech[np.where(y==years)[0]]
+        normal_month             = np.array([nf[3:5] for nf in normal_year])
         
-    #    month                    ={}
-    #    month_pcu                ={}
-    #    month_pcu_std            ={}
-    #    month_pcu_dif            ={}
-    #    month_pcu_dif_std        ={}
+        month                    ={}
+        month_pcu                ={}
+        month_pcu_std            ={}
+        month_pcu_dif            ={}
+        month_pcu_dif_std        ={}
         
-    #    month_ndci               ={}
-    #    month_ndci_dif           ={}
-    #    month_ndci_sen           ={}
+        month_ndci               ={}
+        month_ndci_dif           ={}
+        month_ndci_sen           ={}
         
-    #    month_chl                ={}
-    #    month_chl_std            ={}
-    #    month_chl_dif            ={}
-    #    month_chl_dif_std        ={}
-    #    days                     ={}
-    #    month_name = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-    #    month_numb = ['01','02','03','04','05','06','07','08','09','10','11','12']
-    #    for m in range(len(month_name)):
-    #        temp=np.where(normal_month==month_numb[m])[0]
-    #        rrs_temp=rrs[temp]
-    #        days[month_name[m]]=normal_year[np.where(normal_month==month_numb[m])[0]]
-    #        month[month_name[m]]=np.nanmean(rrs_temp,axis=0)
+        month_chl                ={}
+        month_chl_std            ={}
+        month_chl_dif            ={}
+        month_chl_dif_std        ={}
+        days                     ={}
+        month_name = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        month_numb = ['01','02','03','04','05','06','07','08','09','10','11','12']
+        for m in range(len(month_name)):
+            temp=np.where(normal_month==month_numb[m])[0]
+            rrs_temp=rrs[temp]
+            days[month_name[m]]=normal_year[np.where(normal_month==month_numb[m])[0]]
+            month[month_name[m]]=np.nanmean(rrs_temp,axis=0)
             
-    #        month_pcu[month_name[m]]=year_pcu[temp]
-    #        month_pcu_dif[month_name[m]]=year_pcu_dif[temp]
-    #        month_chl[month_name[m]]=year_chl[temp]
-    #        month_chl_dif[month_name[m]]=year_chl_dif[temp]
-    #        month_ndci[month_name[m]]=year_ndci[temp]
-    #        month_ndci_dif[month_name[m]]=year_ndci_dif[temp]
-    #        month_pcu_std[month_name[m]]=year_pcu_std[temp]
-    #        month_chl_std[month_name[m]]=year_chl_std[temp]
-    #        month_ndci_sen[month_name[m]]=year_ndci_sen[temp]
+            month_pcu[month_name[m]]=year_pcu[temp]
+            month_pcu_dif[month_name[m]]=year_pcu_dif[temp]
+            month_chl[month_name[m]]=year_chl[temp]
+            month_chl_dif[month_name[m]]=year_chl_dif[temp]
+            month_ndci[month_name[m]]=year_ndci[temp]
+            month_ndci_dif[month_name[m]]=year_ndci_dif[temp]
+            month_pcu_std[month_name[m]]=year_pcu_std[temp]
+            month_chl_std[month_name[m]]=year_chl_std[temp]
+            month_ndci_sen[month_name[m]]=year_ndci_sen[temp]
             
-    #    for i in range(len(month)):
-    #        if len(days[month_name[i]])!=0:
-    #            rrs_plot(wl,month[month_name[i]],output_dir+"rrs/",month_name[i]+"_"+str(y))
+        for i in range(len(month)):
+            if len(days[month_name[i]])!=0:
+                rrs_plot(wl,month[month_name[i]],output_dir+"rrs/",month_name[i]+"_"+str(y))
                 
-    #            chl_pcu(days[month_name[i]],month_chl_dif[month_name[i]],month_chl_std[month_name[i]],month_pcu_dif[month_name[i]],month_pcu_std[month_name[i]],output_dir+"chl/",month_name[i]+"_"+str(y),True)
-    #            ndci_plot(days[month_name[i]],month_ndci_dif[month_name[i]],month_ndci_sen[month_name[i]],output_dir+"ndci/",month_name[i]+"_"+str(y),True)
-    #            chl_pcu(days[month_name[i]],month_chl_dif[month_name[i]],month_chl_std[month_name[i]],month_pcu_dif[month_name[i]],month_pcu_std[month_name[i]],output_dir+"chl/",month_name[i],True)
-    #            ndci_plot(days[month_name[i]],month_ndci_dif[month_name[i]],month_ndci_sen[month_name[i]],output_dir+"ndci/",month_name[i],True)
+                chl_pcu(days[month_name[i]],month_chl_dif[month_name[i]],month_chl_std[month_name[i]],month_pcu_dif[month_name[i]],month_pcu_std[month_name[i]],output_dir+"chl/",month_name[i]+"_"+str(y),True)
+                ndci_plot(days[month_name[i]],month_ndci_dif[month_name[i]],month_ndci_sen[month_name[i]],output_dir+"ndci/",month_name[i]+"_"+str(y),True)
+                chl_pcu(days[month_name[i]],month_chl_dif[month_name[i]],month_chl_std[month_name[i]],month_pcu_dif[month_name[i]],month_pcu_std[month_name[i]],output_dir+"chl/",month_name[i],True)
+                ndci_plot(days[month_name[i]],month_ndci_dif[month_name[i]],month_ndci_sen[month_name[i]],output_dir+"ndci/",month_name[i],True)
     
